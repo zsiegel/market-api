@@ -1,0 +1,46 @@
+
+type Quote {
+    symbol: String!
+    companyName: String!
+    primaryExchange: String!
+
+    latestPrice: Float!
+    extendedPrice: Float!
+    latestUpdate: Int!
+
+    change: Float!
+    high: Float!
+    low: Float!
+    week52High: Float!
+    week52Low: Float!
+    volume: Int!
+
+    peRatio: Float!
+    yearToDateChange: Float!
+
+    isUSMarketOpen: Boolean
+}
+
+# This represents a given account
+type Account {
+    id: ID!
+    name: String!
+    description: String!
+    taxable: Boolean!
+    positions: [Position]!
+}
+
+# This represents a position in a given account
+type Position {
+    id: ID!
+    ticker: String! # The ticket symbol for the position
+    shares: String! # Make this a decimal scalar
+    price: String! # the price the security was purchased at
+    date: String! # a ISO-8601 date
+}
+
+# These are all the queries available to you
+type Query {
+#    accounts: [Account]!
+    quotes(symbols: [String]!): [Quote]!
+}

@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  market-api:
+    user: gradle
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: ["sh", "-c", "gradle --no-daemon test --fail-fast --console plain --stacktrace"]
+  postgres-test:
+    image: "postgres:12.3"
+    environment:
+      POSTGRES_USER: market
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: market
+    ports:
+      - 5432:5432

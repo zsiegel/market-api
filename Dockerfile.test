@@ -1,0 +1,8 @@
+FROM gradle:6.5.0-jdk14
+
+ENV PROJECT_FOLDER market-api
+
+ADD --chown=gradle:gradle . /home/gradle/$ROOT_FOLDER
+
+USER gradle
+WORKDIR /home/gradle/$ROOT_FOLDER
